@@ -6,8 +6,6 @@ import {
   KeyboardAvoidingView,
   StyleSheet,
   Text,
-  TextInput,
-  TouchableOpacity,
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
@@ -15,15 +13,9 @@ import MainButton from '../../Components/Buttons/MainButton';
 import { SecondaryButton } from '../../Components/Buttons/SecondaryButton';
 import PasswordInput from '../../Components/Inputs/PasswordInput';
 import EmailInput from '../../Components/Inputs/EmailInput';
-import DefaultInput from '../../Components/Inputs/DefaultInput';
 
-const imgPlus = require('../../Images/plus.png');
-const imgX = require('../../Images/x.png');
-const imgAvatar = require('../../Images/avatar.png');
-
-export const RegistrationScreen = () => {
+export const LoginScreen = () => {
   const [isKeyboardShown, setIsKeyboardShown] = useState(false);
-  const [isAvatar, setIsAvatar] = useState(false);
 
   useEffect(() => {
     const keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', () =>
@@ -49,26 +41,14 @@ export const RegistrationScreen = () => {
       style={styles.kavContainer}
     >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <View style={{ ...styles.container, marginBottom: isKeyboardShown ? -170 : 0 }}>
-          <View style={styles.avatarWrapper}>
-            <Image source={isAvatar ? imgAvatar : null} style={styles.avatar}></Image>
-            <View style={{ ...styles.btnPlus, borderColor: '#E8E8E8' }}>
-              <Image source={isAvatar ? imgX : imgPlus} style={{ width: 13, height: 13 }}></Image>
-            </View>
-          </View>
-
-          <Text style={styles.title}>Регистрация</Text>
-          <DefaultInput placeHolder="Логин" />
+        <View style={{ ...styles.container, marginBottom: isKeyboardShown ? -240 : 0 }}>
+          <Text style={styles.title}>Войти</Text>
 
           <EmailInput />
           <PasswordInput />
 
-          <MainButton
-            buttonText="Зарегистрироваться"
-            style={{ button: { marginTop: 23 } }}
-            onClick={null}
-          />
-          <SecondaryButton buttonText="Уже есть аккаунт? Войти" onClick={null} />
+          <MainButton buttonText="Войти" style={{ button: { marginTop: 23 } }} onClick={null} />
+          <SecondaryButton buttonText="Нет аккаунта? Зарегистрироваться" onClick={null} />
         </View>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
@@ -81,10 +61,10 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   container: {
-    paddingTop: 92,
+    paddingTop: 32,
     paddingLeft: 16,
     paddingRight: 16,
-    paddingBottom: 78,
+    paddingBottom: 144,
     backgroundColor: '#FFFFFF',
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
@@ -93,30 +73,7 @@ const styles = StyleSheet.create({
     gap: 16,
     alignItems: 'center',
   },
-  avatarWrapper: {
-    position: 'absolute',
-    top: -60,
-    left: Dimensions.get('window').width / 2 - 60,
-    width: 120,
-    height: 120,
-    borderRadius: 16,
-    backgroundColor: '#F6F6F6',
-  },
-  avatar: { width: '100%', width: 120, height: 120 },
-  btnPlus: {
-    width: 25,
-    height: 25,
-    borderRadius: 50,
-    borderWidth: 1,
-    borderColor: '#FF6C00',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
 
-    position: 'absolute',
-    right: -25 / 2,
-    bottom: 14,
-  },
   input: {
     width: 343,
     height: 50,
@@ -136,4 +93,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default RegistrationScreen;
+export default LoginScreen;

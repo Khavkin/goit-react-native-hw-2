@@ -1,9 +1,34 @@
 import { Dimensions, ImageBackground, StyleSheet, View } from 'react-native';
 import RegistrationScreen from './Screens/RegistrationScreen/RegistrationScreen';
+import { loadAsync } from 'expo-font';
+import { useEffect, useState } from 'react';
+import LoginScreen from './Screens/LoginScreen/LoginScreen';
 
 const bgImage = require('./Images/Photo-BG.png');
 
 export default function App() {
+  const [isFontsLoaded, setIsFontsLoaded] = useState(false);
+
+  // const [fontsLoaded] = useFonts({
+  //   RobotoBold: require('./assets/Fonts/Roboto-Bold.ttf'),
+  //   RobotoMedium: require('./assets/Fonts/Roboto-Medium.ttf'),
+  //   RobotoRegular: require('./assets/Fonts/Roboto-Regular.ttf'),
+  // });
+
+  useEffect(() => {
+    const loadFonts = async () => {
+      await loadAsync({
+        RobotoBold: require('./assets/Fonts/Roboto-Bold.ttf'),
+        RobotoMedium: require('./assets/Fonts/Roboto-Medium.ttf'),
+        RobotoRegular: require('./assets/Fonts/Roboto-Regular.ttf'),
+      });
+      setIsFontsLoaded(true);
+    };
+    loadFonts();
+  }, []);
+
+  if (!isFontsLoaded) return null;
+
   return (
     <>
       <ImageBackground
@@ -13,7 +38,8 @@ export default function App() {
       ></ImageBackground>
 
       <View style={styles.container}>
-        <RegistrationScreen />
+        {/* <RegistrationScreen /> */}
+        <LoginScreen />
       </View>
     </>
   );
