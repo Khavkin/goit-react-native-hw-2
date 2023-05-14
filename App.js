@@ -3,6 +3,7 @@ import RegistrationScreen from './Screens/RegistrationScreen/RegistrationScreen'
 import { loadAsync } from 'expo-font';
 import { useEffect, useState } from 'react';
 import LoginScreen from './Screens/LoginScreen/LoginScreen';
+import PostsScreen from './Screens/PostsScreen/PostsScreen';
 
 const bgImage = require('./Images/Photo-BG.png');
 
@@ -39,7 +40,8 @@ export default function App() {
 
       <View style={styles.container}>
         {/* <RegistrationScreen /> */}
-        <LoginScreen />
+        {/* <LoginScreen /> */}
+        <PostsScreen />
       </View>
     </>
   );

@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     backgroundColor: '#F6F6F6',
   },
-  avatar: { width: '100%', width: 120, height: 120 },
+  avatar: { width: 120, height: 120 },
   btnPlus: {
     width: 25,
     height: 25,
